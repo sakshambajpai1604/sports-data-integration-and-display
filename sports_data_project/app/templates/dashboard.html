@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>User Dashboard</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <div>
+            <h2>Recent Activities</h2>
+            <ul>
+                {% for activity in activities %}
+                    <li>
+                        <strong>{{ activity.name }}</strong> - 
+                        Distance: {{ activity.distance }} m, 
+                        Time: {{ activity.moving_time }} s
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h2>Activity Chart</h2>
+            <img src="{{ chart_url }}" alt="Activity Chart">
+        </div>
+    {% endif %}
+</body>
+</html>
